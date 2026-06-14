@@ -9,8 +9,7 @@ function ocitajSenzoreSata() {
 // AI model provjerava podatke i aktivira krizni način rada ako prepozna anomaliju
 function pokreniAiAnalizu() {
     setInterval(() => {
-        let trenutniPuls = ocitajSenzoreSata();
-        
+        let trenutniPuls = ocitajSenzoreSata();        
         // Ako je puls kritično povišen u mirovanju (npr. iznad 100 bpm)
         if (trenutniPuls > 100) {
             console.log("-------------------------------------------------------");
@@ -19,7 +18,7 @@ function pokreniAiAnalizu() {
             saljiPushObavijest();
             console.log("-------------------------------------------------------");
         }
-    }, 4000); // Provjera svake 4 sekunde
+    }, 4000); // Provjera svakih 4 sekunda
 }
 
 function saljiPushObavijest() {
