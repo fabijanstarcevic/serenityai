@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Serenity AI - SOS Intervencija</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Ekran je u tamnom načinu rada kako je definirano specifikacijom -->
+    <div class="app-container">
+        <header>
+            <h1>Serenity AI</h1>
+            <div id="status-apstinencije">Dani bez relapsa: <span id="brojac">42</span></div>
+        </header>
+
+        <main>
+            <!-- SOS Gumb napravljen prema Fittsovom zakonu (masivan i dostupan) -->
+            <div id="sos-zaslon">
+                <p class="uputa">Dalibore, primijetili smo povišen stres. Tu smo.</p>
+                
+                <button id="sos-gumb" onclick="pokreniDisanje()">POKRENI VJEŽBU DISANJA</button>
+                
+                <!-- Elementi koji se aktiviraju nakon klika -->
+                <div id="vjezba-kontejner" style="display: none;">
+                    <div id="krug-za-disanje"></div>
+                    <p id="uputa-disanje">Prati krug...</p>
+                    <p id="tajmer">Preostalo vrijeme: <span id="sekunde">90</span>s</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function pokreniDisanje() {
+            // Sakrij početni gumb i uputu
+            document.getElementById('sos-gumb').style.display = 'none';
+            document.querySelector('.uputa').style.display = 'none';
+            
+            // Prikaži kontejner s animacijom kruga i tajmerom
+            document.getElementById('vjezba-kontejner').style.display = 'block';
+            
+            let preostaloVrijeme = 90;
+            let uputaTekst = document.getElementById('uputa-disanje');
+            
+            // Mijenjanje tekstualne upute u skladu s 10-sekundnim intervalom kruga
+            let tekstInterval = setInterval(() => {
+                let trenutniSekund = 90 - preostaloVrijeme;
+                let faza = trenutniSekund % 10;
+                
+                if (faza < 4) {
+                    uputaTekst.innerText = "Udahni...";
+                } else if (faza >= 4 && faza < 6) {
+                    uputaTekst.innerText = "Zadrži dah...";
+                } else {
+                    uputaTekst.innerText = "Izdahni...";
+                }
+            }, 500);
+
+            // Glavni tajmer vježbe od 90 sekundi
+            let interval = setInterval(() => {
+                preostaloVrijeme--;
+                document.getElementById('sekunde').innerText = preostaloVrijeme;
+                
+                if(preostaloVrijeme <= 0) {
+                    clearInterval(interval);
+                    clearInterval(tekstInterval);
+                    alert("Kriza je uspješno premošćena! +1 dan dodan na brojač.");
+                    let trenutniDani = parseInt(document.getElementById('brojac').innerText);
+                    document.getElementById('brojac').innerText = trenutniDani + 1;
+                    
+                    // Resetiraj zaslon
+                    document.getElementById('vjezba-kontejner').style.display = 'none';
+                    document.getElementById('sos-gumb').style.display = 'block';
+                    document.querySelector('.uputa').style.display = 'block';
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
