@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Ekran je u tamnom načinu rada kako je definirano specifikacijom -->
     <div class="app-container">
         <header>
             <h1>Serenity AI</h1>
@@ -32,7 +31,6 @@
 
     <script>
         function pokreniDisanje() {
-            // Sakrij početni gumb i uputu
             document.getElementById('sos-gumb').style.display = 'none';
             document.querySelector('.uputa').style.display = 'none';
             
@@ -42,7 +40,7 @@
             let preostaloVrijeme = 90;
             let uputaTekst = document.getElementById('uputa-disanje');
             
-            // Mijenjanje tekstualne upute u skladu s 10-sekundnim intervalom kruga
+            //interval disanja
             let tekstInterval = setInterval(() => {
                 let trenutniSekund = 90 - preostaloVrijeme;
                 let faza = trenutniSekund % 10;
@@ -56,7 +54,7 @@
                 }
             }, 500);
 
-            // Glavni tajmer vježbe od 90 sekundi
+            // Glavni tajmer vježbe (90 sekundi)
             let interval = setInterval(() => {
                 preostaloVrijeme--;
                 document.getElementById('sekunde').innerText = preostaloVrijeme;
