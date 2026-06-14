@@ -32,13 +32,13 @@
             document.getElementById('sos-gumb').style.display = 'none';
             document.querySelector('.uputa').style.display = 'none';
             
-            // Prikaži kontejner s animacijom kruga i tajmerom
+            // Prikaži kontejner s animacijom kruga i timerom
             document.getElementById('vjezba-kontejner').style.display = 'block';
             
             let preostaloVrijeme = 90;
             let uputaTekst = document.getElementById('uputa-disanje');
             
-            //interval disanja
+            //Interval disanja
             let tekstInterval = setInterval(() => {
                 let trenutniSekund = 90 - preostaloVrijeme;
                 let faza = trenutniSekund % 10;
@@ -52,7 +52,7 @@
                 }
             }, 500);
 
-            // Glavni tajmer vježbe (90 sekundi)
+            // Glavni timer vježbe (90 sekundi)
             let interval = setInterval(() => {
                 preostaloVrijeme--;
                 document.getElementById('sekunde').innerText = preostaloVrijeme;
@@ -64,7 +64,7 @@
                     let trenutniDani = parseInt(document.getElementById('brojac').innerText);
                     document.getElementById('brojac').innerText = trenutniDani + 1;
                     
-                    // Resetiraj zaslon
+                    // Resetiraj zaslon na početno
                     document.getElementById('vjezba-kontejner').style.display = 'none';
                     document.getElementById('sos-gumb').style.display = 'block';
                     document.querySelector('.uputa').style.display = 'block';
