@@ -84,7 +84,7 @@ main {
     color: #94A3B8;
 }
 
-/* Definicija 10-sekundnog ritma: 4s širenje (udah), 2s pauza, 4s skupljanje (izdah) * pomoću keyframeova/
+/* Definicija 10-sekundnog ritma: 4s širenje (udah), 2s pauza, 4s skupljanje (izdah) * pomoću keyframeova*/
 @keyframes pulsiranje {
     0% {
         transform: scale(1);
